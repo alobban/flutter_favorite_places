@@ -26,7 +26,7 @@ final theme = ThemeData().copyWith(
 
 void main() {
   runApp(
-      const MyApp(),
+    const MyApp(),
   );
 }
 
@@ -38,7 +38,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Great Places',
       theme: theme,
-      home: ...,
+      home: const Center(
+        child: Text('Testing!'),
+      ),
     );
   }
 }
