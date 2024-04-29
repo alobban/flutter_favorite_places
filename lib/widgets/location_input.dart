@@ -58,7 +58,7 @@ class _LocationInputState extends State<LocationInput> {
       _isGettingLocation = false;
     });
 
-    print(resData.formatted_address);
+    print(resData['results'][0]['formatted_address']);
   }
 
   @override
