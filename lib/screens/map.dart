@@ -31,7 +31,9 @@ class _MapScreen extends State<MapScreen> {
         actions: [
           if (widget.isSelecting)
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop(_pickedLocation);
+              },
               icon: const Icon(Icons.save),
             ),
         ],
