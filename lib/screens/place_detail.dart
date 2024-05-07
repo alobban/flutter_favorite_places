@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'package:favorite_places/consts.dart';
 import 'package:favorite_places/screens/map.dart';
 import 'package:favorite_places/models/place.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   const PlaceDetailScreen({super.key, required this.place});
+  final apiKey = Consts.gApiKey;
 
   final Place place;
 
   String get locationImage {
     final lat = place.location.latitude;
     final lng = place.location.longitude;
-    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C$lat,$lng&key=AIzaSyCCA4iGpDlVQ9gl-fmA4_w8JF8hOxFT5ug';
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C$lat,$lng&key=$apiKey';
   }
 
   @override

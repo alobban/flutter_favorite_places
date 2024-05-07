@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:favorite_places/screens/map.dart';
 import 'package:favorite_places/models/place.dart';
+import 'package:favorite_places/consts.dart';
 
 class LocationInput extends StatefulWidget {
   const LocationInput({super.key, required this.onSelectionLocation});
@@ -22,6 +23,7 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   PlaceLocation? _pickedLocation;
   var _isGettingLocation = false;
+  final apiKey = Consts.gApiKey;
 
   String get locationImage {
     if (_pickedLocation == null) {
@@ -29,12 +31,12 @@ class _LocationInputState extends State<LocationInput> {
     }
     final lat = _pickedLocation!.latitude;
     final lng = _pickedLocation!.longitude;
-    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C$lat,$lng&key=AIzaSyCCA4iGpDlVQ9gl-fmA4_w8JF8hOxFT5ug';
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lng&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C$lat,$lng&key=$apiKey';
   }
 
   Future<void> _savePlace(double latitude, double longitude) async {
     final url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=AIzaSyCCA4iGpDlVQ9gl-fmA4_w8JF8hOxFT5ug');
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$apiKey');
 
     final response = await http.get(url);
     final resData = json.decode(response.body);
